@@ -1,21 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {AiFillHome as H} from "react-icons/ai";
 import "./Cabecalho.scss"
 
 export default function Cabecalho() {
+
+  const rotaAtual = useLocation();
+
+  console.log("Rota ATUAL: "+ rotaAtual.pathname);
+
   return (
     <>
-      <header>
-        <h1>Vite + React / Coded By - RM551236</h1>
-        <ul>
+      <header className="cabecalho">
+       
+      <ul>
           <li>
-            <Link to="/">HOME - <H/></Link>
+            <Link to="/" className={rotaAtual.pathname == "/" ? "active" : ""}>HOME - <H/></Link>
           </li>
           <li>
-            <Link to="/produtos">PRODUTOS</Link>
+            <Link to="/produtos" className={rotaAtual.pathname == "/produtos" ? "active" : ""}>PRODUTOS</Link>
           </li>
           <li>
-            <Link to="/cadastrar/produto">CADASTRAR PRODUTO</Link>
+            <Link to="/cadastrar/produto" className={rotaAtual.pathname == "/cadastrar/produto" ? "active" : ""}>CADASTRAR PRODUTO</Link>
           </li>
         </ul>
       </header>
